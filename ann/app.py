@@ -6,7 +6,7 @@ import pandas as pd
 import pickle
 
 # load the trained model
-model = tf.keras.models.load_model("./output/ann_model.keras")
+model = tf.keras.models.load_model("../ann/output/ann_model.keras")
 
 ## load encoder and scaler
 with open('./output/label_encoder_gender.pkl', 'rb') as file:
