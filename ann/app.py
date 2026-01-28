@@ -4,18 +4,26 @@ import tensorflow as tf
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 import pandas as pd
 import pickle
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+model_path = BASE_DIR / "output" / "ann_model.keras"
+label_encoder_gender_path = BASE_DIR / "output" / "label_encoder_gender.pkl"
+onehot_encoder_geo_path = BASE_DIR / "output" / "onehot_encoder_geo.pkl"
+scaler_path = BASE_DIR / "output" / "scaler.pkl"
 
 # load the trained model
-model = tf.keras.models.load_model("../ann/output/ann_model.keras")
+model = tf.keras.models.load_model(model_path)
 
 ## load encoder and scaler
-with open('./output/label_encoder_gender.pkl', 'rb') as file:
+with open(label_encoder_gender_path, 'rb') as file:
     label_encoder_gender = pickle.load(file)
 
-with open('./output/onehot_encoder_geo.pkl', 'rb') as file:
+with open(onehot_encoder_geo_path, 'rb') as file:
     onehot_encoder_geo = pickle.load(file)
 
-with open('./output/scaler.pkl', 'rb') as file:
+with open(scaler_path, 'rb') as file:
     scaler = pickle.load(file)
 
 
